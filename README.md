@@ -14,18 +14,19 @@ git config --global credential.username "new_username"
 # go to local terminal 
  git clone repo-url   # local have a folder with same name as repo name
 
- git add .
- git commit -m "message"
- 
+# step-iterate
  git branch -a 
  git branch newbranchname
  git checkout newbranchname
+ git add .
+ git commit -m "message"
  git push   # git push --set-upstream origin newbranchname
  
  # Create PR in github, PR need approval ,then mergy to main. 
  # Local terminal : git checkout main , git pull
- 
 
- add sth in main in console 
+# step-iterate
+ 
+ 
 
 

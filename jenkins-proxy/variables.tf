@@ -1,21 +1,20 @@
-variable "aws_region" {
-  default = "us-west-2"
+variable "jenkins_alb_name" {
+  description = "The name for Jenkins ALB"
+}
+
+variable "jenkins_cert_domain_name" {
+  description = "The name for Jenkins SSL cert domain"
+}
+
+variable "aw_ami" {
+  description = "instance ami"
 }
 
 
-variable "public_key_location" {  
-    default = "/home/sunnyq/.ssh/id_rsa.pub"
- }
+variable "aws_eip_id" {
 
-variable "instance_type"{ 
-    default= "t2.micro"
 }
 
-variable "website_jenkins"{ 
-    default= "jenkinssl.courtcanva.com"
-}
+variable "jenkins_volume" {
 
-variable "health_check_path"{ 
-    default= "/login"
 }
-

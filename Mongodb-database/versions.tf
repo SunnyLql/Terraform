@@ -1,16 +1,13 @@
 terraform {
-  required_version = ">= 0.12"
-}
-provider "aws" {
-  #  shared_credentials_file = "$HOME/jenkins/.aws/credentials"
-  #  profile                 = "default"
-  region = var.aws_region
-  default_tags {
-    tags = {
-      Environment = "${var.env}"
-      Project     = "Courtcanva"
+  required_providers {
+    mongodbatlas = {
+      source = "mongodb/mongodbatlas"
+    }
+    aws = {
+      source = "hashicorp/aws"
     }
   }
+  required_version = ">= 0.15"
 }
 terraform {
   backend "s3" {

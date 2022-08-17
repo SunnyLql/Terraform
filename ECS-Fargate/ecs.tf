@@ -6,7 +6,7 @@ resource "aws_ecs_cluster" "main" {
 
 
 data "template_file" "myapp" {
-  template = file("./templates/ecs/myapp.json.tpl")
+  template = file("./taskdf.json.tpl")
 
   vars = {
     app_image      = var.app_image
@@ -51,4 +51,6 @@ resource "aws_ecs_service" "main" {
 
   depends_on = [aws_alb_listener.https, aws_iam_role_policy_attachment.ecs_task_execution_role]
 }
+
+
 

@@ -1,6 +1,6 @@
 resource "aws_route53_record" "alb-dns" {
   zone_id = data.aws_route53_zone.public_zone.zone_id
-  name    = "${var.website_name}"
+  name    = var.website_name
   type    = "A"
 
   alias {

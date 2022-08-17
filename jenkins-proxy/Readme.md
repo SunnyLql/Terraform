@@ -2,7 +2,7 @@
 
 #.tfvars : save in s3, or in jenkins ec2 
 
-# create job in jenkins, free-style ,pipeline script is below
+# create job in jenkins, free-style , Choice Parameter, pipeline script is below
 
 ```pipeline {
     agent any

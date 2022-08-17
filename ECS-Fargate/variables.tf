@@ -2,21 +2,21 @@
 
 variable "aws_region" {
   description = "The AWS region things are created in"
-  
+
 }
 
-variable "name"{
+variable "name" {
   description = "name of this project"
-  default   ="CCSL"
+
 }
 
-variable "env"{
+variable "env" {
   description = "environment of this project"
-  default   ="UAT"
+
 }
 variable "ecs_task_execution_role_name" {
   description = "ECS task execution role name"
-  default = "myEcsTaskExecutionRole"
+  default     = "myEcsTaskExecutionRole"
 }
 
 variable "az_count" {
@@ -26,21 +26,20 @@ variable "az_count" {
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "497551902879.dkr.ecr.us-west-2.amazonaws.com/ccs-backend-repo:latest"
+
 }
 
 variable "app_port" {
   description = "Port exposed by the docker image to redirect traffic to"
-  default     = 8000
+
 }
 
 variable "app_count" {
   description = "Number of docker containers to run"
-  default     = 1
+
 }
 
 variable "health_check_path" {
-  default = "/api-docs"
 }
 
 variable "fargate_cpu" {
@@ -54,12 +53,12 @@ variable "fargate_memory" {
 }
 
 variable "website_name" {
-
-  default = "uat.apisl.courtcanva.com"
 }
 
-variable "ecrname" {
 
-  default = "backendrepo"
+variable "statefilepath" {
+  type = string
 }
+variable "vpc_cidr_block" {
 
+}

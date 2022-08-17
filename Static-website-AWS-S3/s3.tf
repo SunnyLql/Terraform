@@ -1,13 +1,6 @@
-
-resource "aws_s3_bucket" "ccbucket" {
-  // Our bucket's name is going to be the same as our site's domain name.
-  bucket = "${var.website_name}"
-  // Because we want our site to be available on the internet, we set this so
-  // anyone can read this bucket.
+resource "aws_s3_bucket" "aw_static_web" {
+  bucket = var.aw_static_web
   acl    = "public-read"
-  // We also need to create a policy that allows anyone to view the content.
-  // This is basically duplicating what we did in the ACL but it's required by
-  // AWS. This post: http://amzn.to/2Fa04ul explains why.
   policy = <<POLICY
 {
   "Version":"2012-10-17",
@@ -17,19 +10,20 @@ resource "aws_s3_bucket" "ccbucket" {
       "Effect":"Allow",
       "Principal": "*",
       "Action":["s3:GetObject"],
-      "Resource":["arn:aws:s3:::${var.website_name}/*"]
+      "Resource":["arn:aws:s3:::${var.aw_static_web}/*"]
     }
   ]
 }
 POLICY
 
-  // S3 understands what it means to host a website.
   website {
-    // Here we tell S3 what to use when a request comes in to the root
-    // ex. https://www.runatlantis.io
     index_document = "index.html"
-    // The page to serve up if a request results in an error or a non-existing
-    // page.
     error_document = "404.html"
   }
+  tags = {
+    Name  = "Front-end S3"
+    Owner = var.environment
+  }
+  #tags = var.static_web_tags
 }
+

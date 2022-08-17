@@ -7,8 +7,8 @@ aws s3 cp s3://bucketname/ccs-secret-uat.yaml   .
 kubectl apply -f ccs-secret-uat.yaml    
 
 # ccs-secret-uat.yaml, ccs-secret-prod.yaml, save in s3, pull it when run pipeline 
-```
-apiVersion: v1
+
+```apiVersion: v1
 kind: Secret
 metadata:
   name: ccs-secret
@@ -17,11 +17,11 @@ type: Opaque
 data:
    DATABASE_URL: " "
    PORT: "8080" 
-'''
+```
 
 ##  create job in jenkins, free-style , Choice Parameter, pipeline script is below
-```
-pipeline {
+
+```pipeline {
     agent any
     tools {
           terraform 'Terraform'

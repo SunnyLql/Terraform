@@ -26,6 +26,6 @@ git config --global credential.username "new_username"
  # Local terminal : git checkout main , git pull
  
 
- 
+ add sth in main in console 
 
 

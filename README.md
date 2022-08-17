@@ -16,5 +16,16 @@ git config --global credential.username "new_username"
 
  git add .
  git commit -m "message"
- git 
+ 
+ git branch -a 
+ git branch newbranchname
+ git checkout newbranchname
+ git push   # git push --set-upstream origin newbranchname
+ 
+ # Create PR in github, PR need approval ,then mergy to main. 
+ # Local terminal : git checkout main , git pull
+ 
+
+ 
+
 

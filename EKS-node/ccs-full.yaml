@@ -1,0 +1,76 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cc-eks-namespace-uat
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: cc-server
+  name: cc-server
+  namespace: demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cc-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: cc-server
+    spec:
+      containers:
+      - image: public.ecr.aws/e5b2k3w2/cc-server:latest
+        name: cc-server
+       # env
+        envFrom:
+            # - configMapRef:
+            #   name: cc-server-cm
+          - secretRef:
+                name: ccs-secret-uat        
+           resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: cc-server
+  name: cc-server-svc
+  namespace: demo
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: cc-server
+status:
+  loadBalancer: {}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ccsingress
+  namespace: demo
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: cc-server-svc
+            port:
+              number: 8080

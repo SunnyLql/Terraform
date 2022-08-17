@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: cc-server
+  name: cc-server
+  namespace: demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cc-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: cc-server
+    spec:
+      containers:
+      - image: sunnydocker111/testd:2
+        name: testd
+        resources: {}
+status: {}

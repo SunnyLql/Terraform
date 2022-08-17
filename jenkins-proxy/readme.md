@@ -4,7 +4,7 @@
 
 # create job in jenkins, free-style ,pipeline script is below
 
-pipeline {
+```pipeline {
     agent any
     tools {
           terraform 'Terraform'
@@ -56,4 +56,4 @@ pipeline {
              }
          }
     }
-}
+}```

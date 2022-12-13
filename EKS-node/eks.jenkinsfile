@@ -135,9 +135,9 @@ pipeline {
             }
             steps { 
                 // Update service on EKS in PROD
-                sh "aws s3 cp s3://bucketname/ccs-secret-uat.yaml   .     "
-                sh "kubectl apply -f ccs-full-uat.yaml"   
-                sh "kubectl apply -f ccs-secret-uat.yaml"
+                sh "aws s3 cp s3://bucketname/ccs-secret-prod.yaml   .     "
+                sh "kubectl apply -f ccs-full-prod.yaml"   
+                sh "kubectl apply -f ccs-secret-prod.yaml"
             }
             post {
                 success {
